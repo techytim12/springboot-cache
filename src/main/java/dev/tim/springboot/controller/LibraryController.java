@@ -35,4 +35,10 @@ public class LibraryController {
     public ResponseEntity<Book> updateBook(@RequestBody BookUpdateRequestDTO dto){
         return ResponseEntity.ok(libraryService.updateBook(dto.getId(), dto.getAuthor()));
     }
+
+    @DeleteMapping("/delete-book/{id}")
+    public ResponseEntity<String> deleteBook(@PathVariable int id){
+        libraryService.deleteBook(id);
+        return ResponseEntity.ok("Book deleted");
+    }
 }
